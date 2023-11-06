@@ -6,18 +6,17 @@ const App: React.FC = () => {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    // console.log("useEffect");
     try {
       SDK.init()
         .then(() => {
-          // console.log("SDK Initialized");
+          console.log("SDK Initialized");
           setName(SDK.getUser().name);
         })
         .catch(async (e) => {
-          // console.log("Failed to initialize:", e);
+          console.log("Failed to initialize:", e);
         });
     } catch (e) {
-      // console.log("Error:", e);
+      console.log("Error:", e);
     }
   }, []);
 
