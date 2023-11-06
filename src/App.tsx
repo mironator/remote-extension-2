@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as SDK from "azure-devops-extension-sdk";
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    console.log("useEffect");
+    try {
+      SDK.init()
+        .then(() => {
+          console.log("SDK Initialized");
+          setName(SDK.getUser().name);
+        })
+        .catch(async (e) => {
+          console.log("Failed to initialize:", e);
+        });
+    } catch (e) {
+      console.log("Error:", e);
+    }
+  }, []);
+
+  return <div className="App">Hello, {name}</div>;
+};
 
 export default App;
