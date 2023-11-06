@@ -10,7 +10,7 @@ const App: React.FC = () => {
       SDK.init()
         .then(() => {
           console.log("SDK Initialized");
-          setName(SDK.getUser().name);
+          setName(SDK.getUser().displayName);
         })
         .catch(async (e) => {
           console.log("Failed to initialize:", e);

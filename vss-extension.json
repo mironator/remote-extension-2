@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "remote-extension-test",
   "publisher": "Klengineer",
-  "version": "1.0.11",
+  "version": "1.0.17",
   "name": "Remote Extension Test",
   "description": "Extension for testing remote loading",
   "public": false,
@@ -19,13 +19,14 @@
       "targets": ["ms.vss-work-web.work-item-form"],
       "properties": {
         "name": "Remote Extension",
-        "uri": "build/remote-extension.html"
+        "uri": "index.html"
       }
     }
   ],
   "files": [
     {
-      "path": "build/index.html",
+      "path": "build",
+      "packagePath": "/",
       "addressable": true
     }
   ]
