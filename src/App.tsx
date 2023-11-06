@@ -4,13 +4,15 @@ import "./App.css";
 
 const App: React.FC = () => {
   const [name, setName] = useState("");
+  const [displayName, setDisplayName] = useState("");
 
   useEffect(() => {
     try {
       SDK.init()
         .then(() => {
           console.log("SDK Initialized");
-          setName(SDK.getUser().displayName);
+          setName(SDK.getUser().name);
+          setDisplayName(SDK.getUser().displayName);
         })
         .catch(async (e) => {
           console.log("Failed to initialize:", e);
@@ -20,7 +22,13 @@ const App: React.FC = () => {
     }
   }, []);
 
-  return <div className="App">Hello, {name}</div>;
+  return (
+    <div>
+      <div className="App">Hello</div>
+      <div className="App">{displayName}</div>
+      <div className="App">{name}</div>
+    </div>
+  );
 };
 
 export default App;
